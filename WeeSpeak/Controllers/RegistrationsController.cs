@@ -1,35 +1,34 @@
-namespace WeeSpeak.Controllers;
-
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WeeSpeak.Data;
 using WeeSpeak.Models;
-using System.Text.Json;
+
+namespace WeeSpeak.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class RegistrationsController : ControllerBase
 {
-    private const string FilePath = "Data/registrations.json";
+    private readonly ApplicationDbContext _context;
 
+    public RegistrationsController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    // POST: api/registrations
     [HttpPost]
     public async Task<IActionResult> PostRegistration([FromBody] Registration registration)
     {
-        List<Registration> registrations;
+        _context.Registrations.Add(registration);
+        await _context.SaveChangesAsync();
+        return Ok(new { message = "Zapisano zgłoszenie w bazie!" });
+    }
 
-        if (System.IO.File.Exists(FilePath))
-        {
-            var existing = await System.IO.File.ReadAllTextAsync(FilePath);
-            registrations = JsonSerializer.Deserialize<List<Registration>>(existing) ?? new List<Registration>();
-        }
-        else
-        {
-            registrations = new List<Registration>();
-        }
-
-        registrations.Add(registration);
-        var json = JsonSerializer.Serialize(registrations, new JsonSerializerOptions { WriteIndented = true });
-        Directory.CreateDirectory("Data");
-        await System.IO.File.WriteAllTextAsync(FilePath, json);
-
-        return Ok(new { message = "Zapisano zgłoszenie!" });
+    // GET: api/registrations
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Registration>>> GetRegistrations()
+    {
+        return await _context.Registrations.ToListAsync();
     }
 }

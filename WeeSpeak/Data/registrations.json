@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 0,
+    "FirstName": "Julia",
+    "LastName": "Rutkowska",
+    "ParentPhoneNumber": "663131803",
+    "Age": "12",
+    "Email": "julia.rutkowska189@gmail.com",
+    "SelectedCourse": "Egzamin \u00F3smoklasisty",
+    "CreatedAt": "2025-08-18T12:58:11.1152577Z"
+  },
+  {
+    "Id": 0,
+    "FirstName": "string",
+    "LastName": "string",
+    "ParentPhoneNumber": "string",
+    "Age": "string",
+    "Email": "string",
+    "SelectedCourse": "string",
+    "CreatedAt": "2025-08-18T12:58:39.658Z"
+  },
+  {
+    "Id": 0,
+    "FirstName": "string",
+    "LastName": "string",
+    "ParentPhoneNumber": "string",
+    "Age": "string",
+    "Email": "string",
+    "SelectedCourse": "string",
+    "CreatedAt": "2025-08-18T12:58:39.658Z"
+  },
+  {
+    "Id": 0,
+    "FirstName": "string",
+    "LastName": "string",
+    "ParentPhoneNumber": "string",
+    "Age": "string",
+    "Email": "string",
+    "SelectedCourse": "string",
+    "CreatedAt": "2025-08-18T12:58:39.658Z"
+  }
+]
