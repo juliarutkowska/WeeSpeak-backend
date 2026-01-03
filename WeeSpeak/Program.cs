@@ -54,11 +54,7 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 app.MapControllers();
 
-// 🔽🔽🔽 DODAJ TO TUTAJ 🔽🔽🔽
-app.MapGet("/", () => "WeeSpeak API is running");
-app.MapGet("/health", () => Results.Ok("OK"));
-
-// Auto-migracje
+// Auto-migracje (wygodne na start; później można przenieść do pipeline)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -66,7 +62,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
-
 
 
 // using Microsoft.EntityFrameworkCore;
