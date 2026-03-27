@@ -13,4 +13,4 @@ riderModule.iml
 *.DS_Store
 .env
 .idea/
-WeeSpeak/appsettings.Local.json
+appsettings.Local.json
