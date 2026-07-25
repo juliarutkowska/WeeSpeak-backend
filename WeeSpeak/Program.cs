@@ -19,7 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(CorsPolicy, policy =>
-        policy.AllowAnyOrigin()
+        policy.WithOrigins(
+                "https://weespeak.pl",
+                "https://www.weespeak.pl"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
